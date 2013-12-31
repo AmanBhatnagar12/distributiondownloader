@@ -24,10 +24,27 @@
 #----------------------------------------------------------------------------------|
 #                      IfTux.WordPress.Com                                         |
 #----------------------------------------------------------------------------------|
-
 function DDD {
+tydosycb=`zenity --list \
+                 --title="Elige entre 32 o 64 bits" \
+                 --width=150 \
+                 --height=150 \
+                 --column="seleccionar" --column="procesador" \
+                 --radiolist FALSE "32bits" False "64bits"`
+if [ $? -eq 0 ]
+then
+       for tydosycb in $tydosycb
+       do
+          if [ $tydosycb = "32bits" ];
+                 then
+                      urldedescarga="http://centos.arcticnetwork.ca/6.5/isos/i386/CentOS-6.5-i386-LiveCD.iso"
+          elif [ $tydosycb = "64bits" ]
+                  then
+                      urldedescarga="http://centos.arcticnetwork.ca/6.5/isos/x86_64/CentOS-6.5-x86_64-LiveCD.iso"
+          fi
+       done
+fi
 descargaren=`zenity --file-selection --title="Guardar En..." --save --directory `
-urldedescarga="http://centos.arcticnetwork.ca/6.5/isos/i386/CentOS-6.5-i386-LiveCD.iso"
 cd $descargaren
 wget -t 50 $urldedescarga
 zenity --info --text="Descarga terminada con éxito!!!"
@@ -48,7 +65,7 @@ case $? in
        DDD
        ;;
     1)
-       zenity --info --text="la descarga a sido cancelada "
+       zenity --info --text="la descarga ha sido cancelada "
        ;;
 esac
 }

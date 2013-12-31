@@ -47,7 +47,7 @@ case $? in
        DDD
        ;;
     1)
-       zenity --info --text="la descarga a sido cancelada "
+       zenity --info --text="la descarga ha sido cancelada "
        ;;
 esac
 }

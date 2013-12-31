@@ -25,8 +25,26 @@
 #                      IfTux.WordPress.Com                                         |
 #----------------------------------------------------------------------------------|
 function DDD {
+tydosycb=`zenity --list \
+                 --title="Elige entre 32 o 64 bits" \
+                 --width=150 \
+                 --height=150 \
+                 --column="seleccionar" --column="procesador" \
+                 --radiolist FALSE "32bits" False "64bits"`
+if [ $? -eq 0 ]
+then
+       for tydosycb in $tydosycb
+       do
+          if [ $tydosycb = "32bits" ];
+                 then
+                      urldedescarga="http://cdimage.ubuntu.com/lubuntu/releases/13.10/release/lubuntu-13.10-desktop-i386.iso"
+          elif [ $tydosycb = "64bits" ]
+                  then
+                      urldedescarga="http://cdimage.ubuntu.com/lubuntu/releases/13.10/release/lubuntu-13.10-desktop-amd64.iso"
+          fi
+       done
+fi
 descargaren=`zenity --file-selection --title="Guardar En..." --save --directory `
-urldedescarga="http://cdimage.ubuntu.com/lubuntu/releases/13.10/release/lubuntu-13.10-desktop-i386.iso"
 cd $descargaren
 wget -t 50 $urldedescarga
 zenity --info --text="Descarga terminada con éxito!!!"

@@ -25,8 +25,26 @@
 #                      IfTux.WordPress.Com                                         |
 #----------------------------------------------------------------------------------|
 function DDD {
+tydosycb=`zenity --list \
+                 --title="Elige entre 32 o 64 bits" \
+                 --width=150 \
+                 --height=150 \
+                 --column="seleccionar" --column="procesador" \
+                 --radiolist FALSE "32bits" False "64bits"`
+if [ $? -eq 0 ]
+then
+       for tydosycb in $tydosycb
+       do
+          if [ $tydosycb = "32bits" ];
+                 then
+                      urldedescarga="http://mirror.ufs.ac.za/linuxmint//stable/16/linuxmint-16-cinnamon-dvd-32bit.iso"
+          elif [ $tydosycb = "64bits" ]
+                  then
+                      urldedescarga="http://mirror.ufs.ac.za/linuxmint//stable/16/linuxmint-16-cinnamon-dvd-64bit.iso"
+          fi
+       done
+fi
 descargaren=`zenity --file-selection --title="Guardar En..." --save --directory `
-urldedescarga="http://mirror.ufs.ac.za/linuxmint//stable/16/linuxmint-16-cinnamon-dvd-32bit.iso"
 cd $descargaren
 wget -t 50 $urldedescarga
 zenity --info --text="Descarga terminada con éxito!!!"
@@ -47,7 +65,7 @@ case $? in
        DDD
        ;;
     1)
-       zenity --info --text="la descarga a sido cancelada "
+       zenity --info --text="la descarga ha sido cancelada "
        ;;
 esac
 }

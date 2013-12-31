@@ -25,8 +25,26 @@
 #                      IfTux.WordPress.Com                                         |
 #----------------------------------------------------------------------------------|
 function DDD {
+tydosycb=`zenity --list \
+                 --title="Elige entre 32 o 64 bits" \
+                 --width=150 \
+                 --height=150 \
+                 --column="seleccionar" --column="procesador" \
+                 --radiolist FALSE "32bits" False "64bits"`
+if [ $? -eq 0 ]
+then
+       for tydosycb in $tydosycb
+       do
+          if [ $tydosycb = "32bits" ];
+                 then
+                      urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/i386/Fedora-Live-Desktop-i686-20-1.iso"
+          elif [ $tydosycb = "64bits" ]
+                  then
+                      urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/x86_64/Fedora-Live-Desktop-x86_64-20-1.iso"
+          fi
+       done
+fi
 descargaren=`zenity --file-selection --title="Guardar En..." --save --directory `
-urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/i386/Fedora-Live-Desktop-i686-20-1.iso"
 cd $descargaren
 wget -t 50 $urldedescarga
 zenity --info --text="Descarga terminada con éxito!!!"

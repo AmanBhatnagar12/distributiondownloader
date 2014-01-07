@@ -37,10 +37,10 @@ then
        do
           if [ $tydosycb = "32bits" ];
                  then
-                      urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/i386/Fedora-Live-Desktop-i686-20-1.iso"
+                      urldedescarga="http://downloads.sourceforge.net/kororaproject/korora-19.1-i386-gnome-live.iso"
           elif [ $tydosycb = "64bits" ]
                   then
-                      urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/x86_64/Fedora-Live-Desktop-x86_64-20-1.iso"
+                      urldedescarga="http://downloads.sourceforge.net/kororaproject/korora-19.1-x86_64-gnome-live.iso"
           fi
        done
 fi
@@ -51,9 +51,9 @@ zenity --info --text="Descarga terminada con éxito!!!"
 }
 
 function DESCMAIN {
-archinfo=`dirname $0`/fedora.html
+archinfo=`dirname $0`/korora.html
 zenity --text-info \
-       --title="Descargar Fedora" \
+       --title="Descargar Korora" \
        --filename=$archinfo \
        --html \
        --width=550 \
@@ -65,9 +65,8 @@ case $? in
        DDD
        ;;
     1)
-       zenity --info --text="la descarga a sido cancelada "
+       zenity --info --text="la descarga ha sido cancelada "
        ;;
 esac
 }
 DESCMAIN
-

@@ -37,10 +37,10 @@ then
        do
           if [ $tydosycb = "32bits" ];
                  then
-                      urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/i386/Fedora-Live-Desktop-i686-20-1.iso"
+                      urldedescarga="ftp://ftp.gtlib.gatech.edu/pub/opensuse/distribution/13.1/iso/openSUSE-13.1-DVD-i586.iso"
           elif [ $tydosycb = "64bits" ]
                   then
-                      urldedescarga="http://fedora.c3sl.ufpr.br/linux/releases/20/Live/x86_64/Fedora-Live-Desktop-x86_64-20-1.iso"
+                      urldedescarga="ftp://ftp.gtlib.gatech.edu/pub/opensuse/distribution/13.1/iso/openSUSE-13.1-DVD-x86_64.iso"
           fi
        done
 fi
@@ -51,9 +51,9 @@ zenity --info --text="Descarga terminada con éxito!!!"
 }
 
 function DESCMAIN {
-archinfo=`dirname $0`/fedora.html
+archinfo=`dirname $0`/suse.html
 zenity --text-info \
-       --title="Descargar Fedora" \
+       --title="Descargar OpenSuse" \
        --filename=$archinfo \
        --html \
        --width=550 \
@@ -65,9 +65,8 @@ case $? in
        DDD
        ;;
     1)
-       zenity --info --text="la descarga a sido cancelada "
+       zenity --info --text="la descarga ha sido cancelada "
        ;;
 esac
 }
 DESCMAIN
-

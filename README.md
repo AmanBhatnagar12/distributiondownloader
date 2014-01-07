@@ -1,5 +1,5 @@
-DDistroX Beta 1
-===============
+DDistroX Beta 1.0.2
+====================
 
 __DDistroX__ es una pequeña aplicación programada en Bash y que utiliza zenity para desarrollar el entorno gráfico de la misma.
 

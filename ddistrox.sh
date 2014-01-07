@@ -2,11 +2,11 @@
 
 #----------------------------------------------------------------------------------|
 #                                                                                  |
-#   '||'''|. '||'''|.              ||                  '\\  //`     ||     .''',   |
-#    ||   ||  ||   ||  ''          ||                    \\//      '||     |   |   |
-#    ||   ||  ||   ||  ||  ('''' ''||''  '||''| .|''|,    ><        ||     |   |   |
-#    ||   ||  ||   ||  ||   `'')   ||     ||    ||  ||   //\\       ||     |   |   |
-#   .||...|' .||...|' .||. `...'   `|..' .||.   `|..|' .//  \\.    .||. .. `,,,'   |
+#   '||'''|. '||'''|.              ||                  '\\  //`                    |
+#    ||   ||  ||   ||  ''          ||                    \\//                      |
+#    ||   ||  ||   ||  ||  ('''' ''||''  '||''| .|''|,    ><                       |
+#    ||   ||  ||   ||  ||   `'')   ||     ||    ||  ||   //\\                      |
+#   .||...|' .||...|' .||. `...'   `|..' .||.   `|..|' .//  \\.                    |
 #                                                                                  |
 #----------------------------------------------------------------------------------|
 #                        BPSYS (c) 2014 - GPL V3                                   |
@@ -71,10 +71,11 @@ MENUINICIO
 function DDISTRO {
 distroselec=`zenity --list \
              --title="Elige la distribución a descargar" \
+             --text="Descarga tu distribucion de linux favorita con un clic" \
              --width=600 \
              --height=600 \
              --column="Descargar" --column="Distribución" \
-             --radiolist FALSE "ArchLinux" FALSE "CentOS" FALSE "Debian" FALSE "Fedora" FALSE "Kubuntu" FALSE "LinuxMint" FALSE "Lubuntu" FALSE "Manjaro"  FALSE "PuppyLinux" FALSE "SliTaz" FALSE "Ubuntu"`
+             --radiolist FALSE "ArchLinux" FALSE "CentOS" FALSE "Debian" FALSE "Fedora" FALSE "Korora" FALSE "Kubuntu" FALSE "LinuxMint" FALSE "Lubuntu" FALSE "Manjaro"  FALSE "OpenSuse"  FALSE "PuppyLinux" FALSE "Slackware" FALSE "Slax" FALSE "SliTaz" FALSE "Trisquel" FALSE "Ubuntu"`
 
 if [ $? -eq 0 ]
 then
@@ -113,8 +114,23 @@ then
                 elif [ $distroselec = "Ubuntu" ]
                 then
                       ./$directoriopr/distros/ubuntu.sh
-                 fi
-      done
+# DDistrox Beta 1.0.2
+                elif [ $distroselec = "Korora" ]
+                then
+                      ./$directoriopr/distros/korora.sh
+                elif [ $distroselec = "OpenSuse" ]
+                then
+                      ./$directoriopr/distros/suse.sh
+                elif [ $distroselec = "Slackware" ]
+                then
+                      ./$directoriopr/distros/slack.sh
+                elif [ $distroselec = "Slax" ]
+                then
+                      ./$directoriopr/distros/slax.sh
+                elif [ $distroselec = "Trisquel" ]
+                then
+                      ./$directoriopr/distros/trisquel.sh
+        done
 fi 
 }
 
@@ -123,7 +139,8 @@ fi
 # Main Menu
 function MENUINICIO {
 miselect=`zenity --list \
-                --title="DDistroX 1.0" \
+                --title="DDistroX 1.0.2" \
+                --text="Bienvenidos a DDistrox, por favor selecciona cualquiera de las siguientes opciones:" \
                 --width=550 \
                 --height=230 \
                 --column="Seleccionar" --column="Opciones" \

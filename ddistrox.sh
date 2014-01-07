@@ -130,6 +130,7 @@ then
                 elif [ $distroselec = "Trisquel" ]
                 then
                       ./$directoriopr/distros/trisquel.sh
+                fi
         done
 fi 
 }

@@ -1,20 +1,15 @@
-DDistroX Beta 1.0.2
+Distribution Downloader 1.0.0 Alpha
 ====================
 
-__DDistroX__ es una pequeña aplicación programada en Bash y que utiliza zenity para desarrollar el entorno gráfico de la misma.
+__Distribution Downloader__ is a small graphical application developed in UNIX Shell/Bash, using Zenity and WGet, and designed for Linux newcomers who want a neat tool for downloading various distributions.
 
-Con __DDistroX__ podrás ver y descargar las mejores distribuciones de linux desde un solo lugar, esta descarga se realizara a través de Wget.
+At the moment, the app supports some of the most important distributions of GNU/Linux, including Ubuntu, Arch Linux, CentOS, Fedora, Linux Mint, openSUSE, Slackware, Puppy Linux, and Manjaro.
 
-Requerimientos:
+__Distribution Downloader__ is a fork of the __DDistroX__ tool, created by [BPsys](http://iftux.github.io/pbpsys/) only for Spanish users. The software is distributed for free under the GPLv3 license.
+
+Requirements:
 ---------------
 
   * Zenity
   * Wget
-
-Desarrolladores:
-----------------
-
-[BPsys](http://iftux.github.io/pbpsys/)
-
- Este software es distribuido por [IfTux](http://iftux.wordpress.com/) bajo licencia GPLv3
 

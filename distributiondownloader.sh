@@ -110,15 +110,15 @@ miselect=`zenity --list \
                 --width=550 \
                 --height=230 \
                 --column="Select" --column="Options" \
-                --radiolist FALSE "Download a distribution" FALSE "Request a distribution" FALSE "Help" FALSE "About" `
+                --radiolist FALSE "Download" FALSE "Request" FALSE "Help" FALSE "About" `
 if [ $? -eq 0 ]
 then
        for miselect in $miselect
        do
-                if [ $miselect = "Download a distribution" ];
+                if [ $miselect = "Download" ];
                 then
                      DDOWN
-                elif [ $miselect = "Request a distribution" ]
+                elif [ $miselect = "Request" ]
                 then
                      ADDISTRO
                 elif [ $miselect = "Help" ]

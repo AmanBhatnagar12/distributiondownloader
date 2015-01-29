@@ -25,31 +25,31 @@
 #                      IfTux.WordPress.Com                                         |
 #----------------------------------------------------------------------------------|
 function DDD {
-descargaren=`zenity --file-selection --title="Guardar En..." --save --directory `
-urldedescarga="http://mirror.aarnet.edu.au/pub/archlinux/iso/2014.01.05/archlinux-2014.01.05-dual.iso"
+descargaren=`zenity --file-selection --title="Save File In..." --save --directory `
+urldedescarga="http://mirror.aarnet.edu.au/pub/archlinux/iso/2015.01.01/archlinux-2015.01.01-dual.iso"
 cd $descargaren
-wget -t 50 $urldedescarga
-zenity --info --text="Descarga terminada con éxito!!!"
+wget $urldedescarga
+zenity --info --text="Download completed successfully!"
 }
 
-function DESCMAIN {
+function DOWNMAIN {
 archinfo=`dirname $0`/archlinux.html
 zenity --text-info \
-       --title="Descargar ArchLinux" \
+       --title="Download ArchLinux" \
        --filename=$archinfo \
        --html \
        --width=550 \
        --height=550 \
-       --ok-label="Descargar" \
-       --cancel-label="Salir"
+       --ok-label="Download" \
+       --cancel-label="Close"
 case $? in
     0)
        DDD
        ;;
     1)
-       zenity --info --text="la descarga ha sido cancelada "
+       zenity --info --text="the download operation has been canceled"
        ;;
 esac
 }
-DESCMAIN
+DOWNMAIN
 

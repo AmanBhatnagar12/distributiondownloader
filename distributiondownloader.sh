@@ -14,13 +14,13 @@
 #       GNU General Public License for more details.                               |
 #                                                                                  |
 #----------------------------------------------------------------------------------|
-#                               linux.softpedia.com                                |
+#             https://github.com/mariusnestor/distributiondownloader               |
 #----------------------------------------------------------------------------------|
 
 
 #  License GPLv3
 directoriopr=`dirname $0`/
-saltarlic=`dirname $0`/acceptlic
+saltarlic=`dirname $0`/licenseaccepted
 function LICENSE {
 licgpl=`dirname $0`/LICENSE
 
@@ -39,7 +39,7 @@ esac
 function DDABOUT {
 arabout=`dirname $0`/about.html
 zenity --text-info \
-       --title="About What" \
+       --title="About Program" \
        --filename=$arabout \
        --html \
        --width=550 \
@@ -51,15 +51,15 @@ esac
 }
 # The help
 function DDHELP {
-zenity --info --text "In construction"
+xdg-open "https://github.com/mariusnestor/distributiondownloader/wiki"
 MAINMENU
 }
 # Request a distribution
 function ADDISTRO {
-xdg-open "http://linux.softpedia.com/editors/browse/marius-nestor"
+xdg-open "https://github.com/mariusnestor/distributiondownloader/wiki"
 MAINMENU
 }
-# I want to download a distribution
+# Download a distribution
 function DOWNLOADS {
 distroselec=`zenity --list \
              --title="Choose a distribution to download" \
@@ -158,7 +158,7 @@ then
        done
 fi
 }
-# running all crazy
+# Stuff
 if [ -f $saltarlic ];
 then
      MAINMENU

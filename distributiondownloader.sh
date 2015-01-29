@@ -17,8 +17,7 @@
 #             https://github.com/mariusnestor/distributiondownloader               |
 #----------------------------------------------------------------------------------|
 
-
-#  License GPLv3
+#  Accept License
 directoriopr=`dirname $0`/
 saltarlic=`dirname $0`/licenseaccepted
 function LICENSE {
@@ -35,32 +34,9 @@ case $? in
        MAINMENU
 esac
 }
-# I am the creator
-function DDABOUT {
-arabout=`dirname $0`/about.html
-zenity --text-info \
-       --title="About Program" \
-       --filename=$arabout \
-       --html \
-       --width=550 \
-       --height=300
-case $? in
-    0)
-       MAINMENU
-esac
-}
-# The help
-function DDHELP {
-xdg-open "https://github.com/mariusnestor/distributiondownloader/wiki"
-MAINMENU
-}
-# Request a distribution
-function ADDISTRO {
-xdg-open "https://github.com/mariusnestor/distributiondownloader/wiki"
-MAINMENU
-}
-# Download a distribution
-function DOWNLOADS {
+
+# Distribution Selector
+function DDOWN {
 distroselec=`zenity --list \
              --title="Choose a distribution to download" \
              --text="Download your favorite Linux distribution with a single mouse click" \
@@ -126,8 +102,6 @@ then
 fi 
 }
 
-
-
 # Main Menu
 function MAINMENU {
 miselect=`zenity --list \
@@ -143,7 +117,7 @@ then
        do
                 if [ $miselect = "Download a distribution" ];
                 then
-                     DOWNLOADS
+                     DDOWN
                 elif [ $miselect = "Request a distribution" ]
                 then
                      ADDISTRO
@@ -158,7 +132,35 @@ then
        done
 fi
 }
-# Stuff
+
+# Request Distribution
+function ADDISTRO {
+xdg-open "https://github.com/mariusnestor/distributiondownloader/wiki"
+MAINMENU
+}
+
+# About Dialog
+function DDABOUT {
+arabout=`dirname $0`/about.html
+zenity --text-info \
+       --title="About Program" \
+       --filename=$arabout \
+       --html \
+       --width=550 \
+       --height=300
+case $? in
+    0)
+       MAINMENU
+esac
+}
+
+# Help Dialog
+function DDHELP {
+xdg-open "https://github.com/mariusnestor/distributiondownloader/wiki"
+MAINMENU
+}
+
+# Extra Stuff
 if [ -f $saltarlic ];
 then
      MAINMENU

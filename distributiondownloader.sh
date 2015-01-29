@@ -20,9 +20,9 @@
 
 #  License GPLv3
 directoriopr=`dirname $0`/
-saltarlic=`dirname $0`/aceptlic
+saltarlic=`dirname $0`/acceptlic
 function LICENSE {
-licgpl=`dirname $0`/gplv3
+licgpl=`dirname $0`/LICENSE
 
 zenity --text-info \
        --title="GNU General Public License V3" \
@@ -37,7 +37,7 @@ esac
 }
 # I am the creator
 function DDABOUT {
-arabout=`dirname $0`/acercade.html
+arabout=`dirname $0`/about.html
 zenity --text-info \
        --title="About What" \
        --filename=$arabout \
@@ -46,7 +46,7 @@ zenity --text-info \
        --height=300
 case $? in
     0)
-       MENUINICIO
+       MAINMENU
 esac
 }
 # The help
@@ -106,7 +106,6 @@ then
                 elif [ $distroselec = "Ubuntu" ]
                 then
                       ./$directoriopr/distros/ubuntu.sh
-# Distribution Downloader 1.0.0 Alpha
                 elif [ $distroselec = "Korora" ]
                 then
                       ./$directoriopr/distros/korora.sh
@@ -137,15 +136,15 @@ miselect=`zenity --list \
                 --width=550 \
                 --height=230 \
                 --column="Select" --column="Options" \
-                --radiolist FALSE "Downloads" FALSE "Add" FALSE "Help" FALSE "About" `
+                --radiolist FALSE "Download a distribution" FALSE "Request a distribution" FALSE "Help" FALSE "About" `
 if [ $? -eq 0 ]
 then
        for miselect in $miselect
        do
-                if [ $miselect = "Downloads" ];
+                if [ $miselect = "Download a distribution" ];
                 then
                      DOWNLOADS
-                elif [ $miselect = "Add" ]
+                elif [ $miselect = "Request a distribution" ]
                 then
                      ADDISTRO
                 elif [ $miselect = "Help" ]

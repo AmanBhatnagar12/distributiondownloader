@@ -29,7 +29,7 @@
 #  License GPLv3
 directoriopr=`dirname $0`/
 saltarlic=`dirname $0`/aceptlic
-function LICENCIA {
+function LICENSE {
 licgpl=`dirname $0`/gplv3
 
 zenity --text-info \
@@ -39,15 +39,15 @@ zenity --text-info \
        --height=300
 case $? in
     0)
-       echo "No borrar este archivo - Do not delete this file" > $saltarlic
-       MENUINICIO
+       echo "Do not delete this file" > $saltarlic
+       MAINMENU
 esac
 }
 # I am the creator
 function DDABOUT {
 arabout=`dirname $0`/acercade.html
 zenity --text-info \
-       --title="Acerca De" \
+       --title="About What" \
        --filename=$arabout \
        --html \
        --width=550 \
@@ -57,24 +57,24 @@ case $? in
        MENUINICIO
 esac
 }
-# this is help
-function DDAYUDA {
-zenity --info --text "En construcción"
-MENUINICIO
+# The help
+function DDHELP {
+zenity --info --text "In construction"
+MAINMENU
 }
-# I send my distribution
+# Request a distribution
 function ADDISTRO {
-xdg-open "https://docs.google.com/forms/d/1QdlCex4HaS1ecPv7edVtA4gk7yBzfBv7-wsI9MsanY8/viewform"
-MENUINICIO
+xdg-open "http://linux.softpedia.com/editors/browse/marius-nestor"
+MAINMENU
 }
 # I want to download a distribution
-function DDISTRO {
+function DOWNLOADS {
 distroselec=`zenity --list \
-             --title="Elige la distribución a descargar" \
-             --text="Descarga tu distribucion de linux favorita con un clic" \
+             --title="Choose a distribution to download" \
+             --text="Download your favorite Linux distribution with a single mouse click" \
              --width=600 \
              --height=600 \
-             --column="Descargar" --column="Distribución" \
+             --column="Download" --column="Distribution" \
              --radiolist FALSE "ArchLinux" FALSE "CentOS" FALSE "Debian" FALSE "Fedora" FALSE "Korora" FALSE "Kubuntu" FALSE "LinuxMint" FALSE "Lubuntu" FALSE "Manjaro"  FALSE "OpenSuse"  FALSE "PuppyLinux" FALSE "Slackware" FALSE "Slax" FALSE "SliTaz" FALSE "Trisquel" FALSE "Ubuntu"`
 
 if [ $? -eq 0 ]
@@ -114,7 +114,7 @@ then
                 elif [ $distroselec = "Ubuntu" ]
                 then
                       ./$directoriopr/distros/ubuntu.sh
-# DDistrox Beta 1.0.2
+# Distribution Downloader 1.0.0 Alpha
                 elif [ $distroselec = "Korora" ]
                 then
                       ./$directoriopr/distros/korora.sh
@@ -138,27 +138,27 @@ fi
 
 
 # Main Menu
-function MENUINICIO {
+function MAINMENU {
 miselect=`zenity --list \
-                --title="DDistroX 1.0.2" \
-                --text="Bienvenidos a DDistrox, por favor selecciona cualquiera de las siguientes opciones:" \
+                --title="Distribution Downloader 1.0.0 Alpha" \
+                --text="Welcome to Distribution Downloader, please select one of the following options:" \
                 --width=550 \
                 --height=230 \
-                --column="Seleccionar" --column="Opciones" \
-                --radiolist FALSE "Descargas" FALSE "Agregar" FALSE "Ayuda" FALSE "About" `
+                --column="Select" --column="Options" \
+                --radiolist FALSE "Downloads" FALSE "Add" FALSE "Help" FALSE "About" `
 if [ $? -eq 0 ]
 then
        for miselect in $miselect
        do
-                if [ $miselect = "Descargas" ];
+                if [ $miselect = "Downloads" ];
                 then
-                     DDISTRO
-                elif [ $miselect = "Agregar" ]
+                     DOWNLOADS
+                elif [ $miselect = "Add" ]
                 then
                      ADDISTRO
-                elif [ $miselect = "Ayuda" ]
+                elif [ $miselect = "Help" ]
                 then
-                     DDAYUDA
+                     DDHELP
                 elif [ $miselect = "About" ]
                 then
                      DDABOUT
@@ -170,7 +170,7 @@ fi
 # running all crazy
 if [ -f $saltarlic ];
 then
-     MENUINICIO
+     MAINMENU
 else
-     LICENCIA
+     LICENSE
 fi
